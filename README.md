@@ -163,6 +163,15 @@ Good first contributions: more job-board providers (Rippling, SmartRecruiters,
 Workday); a non-design default `titles.py`; and a single-résumé mode that doesn't
 need the LinkedIn export.
 
-## License
+## License and terms of use
 
-MIT. See `LICENSE`.
+Free to use, under the [MIT License](LICENSE). In plain terms:
+
+- **Use it however you like**, personally or commercially. Copy it, change it, share it.
+  Just keep the license notice in copies.
+- **No guarantee.** It's provided as is, with no warranty of any kind. You're
+  responsible for what it sends to the Anthropic API (and what that costs), for
+  checking every document it drafts before you send it, and for following each job
+  board's terms.
+- **Contributions are welcome.** By opening a pull request, you agree your
+  contribution is released under the same MIT License.
