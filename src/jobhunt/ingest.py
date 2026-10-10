@@ -9,7 +9,10 @@ from pathlib import Path
 from . import config
 from .overrides import load_overrides
 from .parse_linkedin_pdf import extract_text, normalize_lines, parse_text
-from .env import load_env
+import pydantic
+import yaml
+
+from .env import EnvFileError, load_env
 from .parse_resume import ResumeError, parse_file as parse_resume_file
 from .persona import load_persona
 from .reconcile import reconcile
@@ -39,22 +42,30 @@ def main(argv: list[str] | None = None) -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     stamp = date.today().isoformat()
 
-    to_snapshot = {**config.SOURCES}
+    try:
+        return _ingest(out_dir, stamp)
+    except (ResumeError, EnvFileError, FileNotFoundError, ValueError,
+            pydantic.ValidationError, yaml.YAMLError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
+
+
+def _ingest(out_dir: Path, stamp: str) -> int:
+    # Persona and credentials first: both are cheap to check, and failing on
+    # them after the PDF parse would waste the work before it.
+    persona = load_persona()
+    load_env()                                  # the resume is structured by Claude
+    sources = config.sources()
+    to_snapshot = {**sources}
     for role, path in config.ARCHIVAL_ONLY.items():
         if path.is_file():                      # archival only; absence is not an error
             to_snapshot[role] = path
     manifest = snapshot(to_snapshot, out_dir / "sources", today=stamp)
 
-    pdf_text = extract_text(config.SOURCES["pdf"])
+    pdf_text = extract_text(sources["pdf"])
     header_lines = normalize_lines(pdf_text)
     pdf_roles, pdf_conflicts = parse_text(pdf_text)
-    persona = load_persona()
-    load_env()                                  # the resume is structured by Claude
-    try:
-        resume = parse_resume_file(config.SOURCES["resume"], persona.summaries)
-    except ResumeError as exc:
-        print(f"error: {exc}", file=sys.stderr)
-        return 1
+    resume = parse_resume_file(sources["resume"], persona.summaries)
     overrides = load_overrides(config.OVERRIDES_PATH)
 
     profile, report = reconcile(pdf_roles, resume, overrides, manifest.files,

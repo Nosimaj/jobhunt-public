@@ -14,7 +14,7 @@ from pathlib import Path
 
 from pydantic import Field
 
-from .matching.scorer import DEFAULT_MODEL, Scorer
+from .matching.scorer import DEFAULT_MODEL, Scorer, ScoreError
 from .models import Project, ResumeJob, ResumeProfile, Skill, Strict, Summaries
 from .parse_linkedin_pdf import extract_text as _pdf_text
 
@@ -66,7 +66,11 @@ def extract_text(path: Path) -> str:
             for row in table.rows:
                 lines.extend(cell.text for cell in row.cells)
         return "\n".join(lines)
-    return path.read_text(encoding="utf-8")
+    try:
+        return path.read_text(encoding="utf-8")
+    except UnicodeDecodeError as exc:
+        raise ResumeError(f"{path.name} is not UTF-8 text - re-save it as UTF-8, "
+                          "or export as PDF or DOCX") from exc
 
 
 def parse_file(path: Path, summaries: Summaries, client=None,
@@ -78,7 +82,16 @@ def parse_file(path: Path, summaries: Summaries, client=None,
     if client is None:
         import anthropic
         client = anthropic.Anthropic()
-    out = Scorer(client, model=model)._call(
-        SYSTEM, f"Structure this resume:\n\n{text}", _Extraction, Path(path).name)
+    try:
+        out = Scorer(client, model=model)._call(
+            SYSTEM, f"Structure this resume:\n\n{text}", _Extraction, Path(path).name)
+    except ScoreError as exc:
+        raise ResumeError(f"could not structure your resume: {exc}") from exc
+    except TypeError as exc:
+        # The SDK raises a bare TypeError at call time when no key resolves.
+        if "authentication method" not in str(exc):
+            raise
+        raise ResumeError("no Anthropic API key - copy .env.example to .env and "
+                          "paste your key (see README)") from exc
     return ResumeProfile(summaries=summaries, skills=out.skills, jobs=out.jobs,
                          projects=out.projects)

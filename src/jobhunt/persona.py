@@ -30,4 +30,8 @@ def load_persona(path: Path | None = None) -> Persona:
         raise FileNotFoundError(
             f"no persona at {path} - copy persona.example.yaml to persona.yaml "
             "and fill it in")
-    return Persona(**yaml.safe_load(path.read_text(encoding="utf-8")))
+    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError(f"{path} is empty or not a mapping - start from "
+                         "persona.example.yaml")
+    return Persona(**data)

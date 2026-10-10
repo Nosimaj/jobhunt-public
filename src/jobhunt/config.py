@@ -31,7 +31,7 @@ APPLICATIONS_DIR = DATA_DIR / "applications"
 EVAL_LABELS = REPO_ROOT / "tests" / "fixtures" / "matching" / "eval_labels.yaml"
 
 # Your two resume sources. Drop them in ./inputs/ or point at them from the
-# environment:
+# environment or .env:
 #   JOBHUNT_LINKEDIN_PDF=/path/to/Profile.pdf
 #   JOBHUNT_RESUME=/path/to/resume.docx
 INPUTS_DIR = REPO_ROOT / "inputs"
@@ -46,11 +46,13 @@ def _default_resume() -> Path:
     return INPUTS_DIR / "resume.docx"
 
 
-# role -> absolute source path.
-SOURCES: dict[str, Path] = {
-    "pdf": Path(os.environ.get("JOBHUNT_LINKEDIN_PDF") or INPUTS_DIR / "linkedin.pdf"),
-    "resume": Path(os.environ.get("JOBHUNT_RESUME") or _default_resume()),
-}
+def sources() -> dict[str, Path]:
+    """role -> source path. A function, not a constant, so the env vars are
+    read AFTER `load_env()` has copied `.env` into the environment."""
+    return {
+        "pdf": Path(os.environ.get("JOBHUNT_LINKEDIN_PDF") or INPUTS_DIR / "linkedin.pdf"),
+        "resume": Path(os.environ.get("JOBHUNT_RESUME") or _default_resume()),
+    }
 
 # Extra files snapshotted for the record but never parsed. Empty by default.
 ARCHIVAL_ONLY: dict[str, Path] = {}

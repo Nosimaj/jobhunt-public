@@ -66,8 +66,8 @@ before re-scoring.
    voice. Old `.doc`, `.pages` and `.odt` files aren't supported. Export them as PDF
    or DOCX.
 
-You can keep them elsewhere and point at them with the `JOBHUNT_LINKEDIN_PDF` and
-`JOBHUNT_RESUME` environment variables instead.
+You can keep them elsewhere and point at them with `JOBHUNT_LINKEDIN_PDF` and
+`JOBHUNT_RESUME`, either in `.env` or exported in your shell.
 
 Your résumé is structured by one Claude call per `ingest` (cents, not dollars). Each
 bullet is tagged `design`, `eng` or `both`, so a generated résumé can lean toward the

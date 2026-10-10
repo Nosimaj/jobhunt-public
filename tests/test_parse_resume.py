@@ -95,3 +95,56 @@ def test_the_shipped_example_persona_loads():
 def test_a_missing_persona_says_how_to_create_one(tmp_path):
     with pytest.raises(FileNotFoundError, match="persona.example.yaml"):
         load_persona(tmp_path / "persona.yaml")
+
+
+def test_a_failed_structuring_call_is_a_resume_error_not_a_traceback(tmp_path):
+    class Failing:
+        class messages:
+            @staticmethod
+            def parse(**kw):
+                import anthropic
+                raise anthropic.APIConnectionError(request=None)
+    path = tmp_path / "resume.txt"
+    path.write_text(RESUME, encoding="utf-8")
+    with pytest.raises(ResumeError, match="could not structure"):
+        parse_file(path, SUMMARIES, client=Failing())
+
+
+def test_no_api_key_says_how_to_add_one(tmp_path):
+    class NoKey:
+        class messages:
+            @staticmethod
+            def parse(**kw):
+                raise TypeError("Could not resolve authentication method.")
+    path = tmp_path / "resume.txt"
+    path.write_text(RESUME, encoding="utf-8")
+    with pytest.raises(ResumeError, match=r"\.env"):
+        parse_file(path, SUMMARIES, client=NoKey())
+
+
+def test_non_utf8_text_is_a_resume_error(tmp_path):
+    path = tmp_path / "resume.txt"
+    path.write_bytes("Café".encode("utf-16"))
+    with pytest.raises(ResumeError, match="UTF-8"):
+        extract_text(path)
+
+
+def test_an_empty_persona_says_where_to_start(tmp_path):
+    path = tmp_path / "persona.yaml"
+    path.write_text("", encoding="utf-8")
+    with pytest.raises(ValueError, match="persona.example.yaml"):
+        load_persona(path)
+
+
+def test_ingest_without_a_persona_prints_one_error_and_exits_1(tmp_path, monkeypatch, capsys):
+    from jobhunt import config, ingest
+    monkeypatch.setattr(config, "PERSONA_PATH", tmp_path / "persona.yaml")
+    assert ingest.main(["--out", str(tmp_path / "data")]) == 1
+    err = capsys.readouterr().err
+    assert err.startswith("error: ") and "persona.example.yaml" in err
+
+
+def test_resume_paths_are_read_after_env_loading(monkeypatch, tmp_path):
+    from jobhunt import config
+    monkeypatch.setenv("JOBHUNT_RESUME", str(tmp_path / "cv.docx"))
+    assert config.sources()["resume"] == tmp_path / "cv.docx"
