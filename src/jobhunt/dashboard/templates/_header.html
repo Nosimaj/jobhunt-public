@@ -1,0 +1,16 @@
+<div id="header"
+     hx-get="/partials/header{% if active %}?action={{ active }}{% endif %}"
+     hx-trigger="every 10s" hx-swap="outerHTML" class="strip">
+  <span class="chip"><span class="chip__k">scored</span> {{ page.scored }}</span>
+  <span class="chip"><span class="chip__k">awaiting</span> {{ page.not_yet_scored }}</span>
+  <span class="chip"><span class="chip__k">prefiltered</span> {{ page.prefiltered }}</span>
+  <a class="chip chip--link{% if not active %} chip--on{% endif %}" href="/">
+    <span class="chip__k">all</span> {{ page.scored }}
+  </a>
+  {% for b in page.buckets if b.count %}
+    <a class="chip chip--link{% if active == b.action %} chip--on{% endif %}"
+       href="/?action={{ b.action }}">
+      <span class="chip__k">{{ b.action.replace('_', ' ') }}</span> {{ b.count }}
+    </a>
+  {% endfor %}
+</div>

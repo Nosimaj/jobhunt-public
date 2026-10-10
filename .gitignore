@@ -1,0 +1,33 @@
+# Personal data — resume snapshots, generated profile, review report.
+# Contains real contact details and full work history.
+data/
+
+# Your resume sources and your persona. Copy persona.example.yaml.
+inputs/
+persona.yaml
+
+# Credentials. Holds a live ANTHROPIC_API_KEY; `.env.example` is the
+# tracked placeholder. Never commit the real file.
+.env
+!.env.example
+
+# Backups of the file below. The bare name `overrides.yaml` does NOT match
+# `overrides.yaml.bak-20260929-223942`, so a timestamped backup was sitting
+# untracked-but-committable with the full sensitive text in it.
+overrides.yaml.bak*
+overrides.yaml.*
+
+# Human positioning decisions, including the written reason for a role
+# suppression. Materially sensitive; must not reach a hosted remote.
+overrides.yaml
+
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.DS_Store
+
+# subagent-driven-development scratch workspace
+.superpowers/

@@ -1,0 +1,70 @@
+# Steering knobs for the two fit rubrics (src/jobhunt/matching/search_config.py).
+# Interpolated into the prompts at render time, never hard-coded into them.
+# Editing this file changes what "fit" means, so it changes `prompt_sha` and
+# marks every stored verdict stale - which is the intended behaviour.
+
+# Rubric A - role fit.
+seniority_range: "senior, staff, principal or lead individual contributor"
+
+# Rubric B - company fit.
+target_domains:
+  - health and care delivery
+  - hardware and software sold together as one product
+  - R&D-led organisations
+
+stage_preference: "seed to Series C, or a small team inside a larger organisation"
+
+company_disqualifiers:
+  - gambling or sports betting
+  - predatory lending
+  - surveillance or ad-tracking as the core product
+
+# Geography. Removed 2026-09-29: a 'return-to-office outside commuting range of
+# Boston' disqualifier would have made rubric B reject Discord, PermitFlow and
+# LatchBio - the companies carrying 14 of the 23 design roles the ATS source
+# surfaces. Location is a ROLE property and must not be smuggled into the
+# COMPANY verdict.
+
+# Geography. CHANGED 2026-10-06: these are now a FILTER input as well as a
+# ranking signal, read by matching/geography.py. They are still NEVER rendered
+# into either rubric - the rubric decides whether the job is right, geography
+# decides whether they can take it. Widening either list and re-running
+# un-excludes roles automatically; nothing is deleted.
+home_metros:
+  - Boston
+  - Cambridge, MA
+  - Somerville, MA
+  - Waltham
+  - Burlington, MA
+  - Newton, MA
+  - Andover, MA
+  - Providence
+  - Nashua
+
+# Backstop for home-area towns not named above. Matched CASE-SENSITIVELY:
+# `\bME\b` under re.I matches the pronoun "me".
+home_states:
+  - MA
+  - NH
+  - VT
+  - ME
+
+# Rubric A. Since 2026-10-06 this is the GATE for engineering-titled roles,
+# replacing the hybrid floor. Keep every entry concrete: "AI products with real
+# users" was removed because nearly every board claims it, which in a gate
+# admits everything.
+role_domains:
+  - internal and employee-facing tools - admin consoles, design systems, workflow tools
+  - telehealth and care delivery
+  - human interfaces to technology - voice, screen, video, ambient
+  - prototyping-led and 0-to-1 product work
+  - hardware and software sold together as one product
+
+# CURRENTLY UNUSED. Declared, validated and read by no code: US geography is
+# enforced by the hardcoded regexes in src/jobhunt/discovery/ats_filters.py,
+# which refuse a non-US role before it is ever stored. Kept as the written
+# record of the intended scope, and as the place to configure it if that
+# enforcement is ever made data-driven - but editing this list changes
+# nothing today.
+allowed_countries:
+  - United States

@@ -1,0 +1,125 @@
+# Eval set for slice 3 matching - the original author's own verdicts - an EXAMPLE; replace them with yours, recorded 2026-09-23.
+#
+# BLIND: labelled before any prompt existed, so no model output could anchor them.
+# Sampled from all candidates with Random(20260923).shuffle over an id-sorted list,
+# so the sample is reproducible and not biased toward the top of the thread.
+#
+# FROZEN. A prompt change is re-measured against these same labels; re-labelling
+# happens only if your own criteria change.
+#
+# `verdict` values are QUOTED deliberately: YAML 1.1 parses a bare `no` as boolean
+# false, which silently corrupted the first version of this file.
+#
+# `criterion` records the deciding factor as a rule rather than as deliberation -
+# the rule is what the prompt needs to encode.
+#
+# Distribution: strong 1 / maybe 4 / no 20. A 4% strong rate is precisely why the
+# matcher has to be willing, and able, to say no.
+
+seed: 20260923
+labelled_at: '2026-09-23'
+pool_size: 132
+labels:
+- id: hn:49543579
+  company: Odin
+  verdict: strong
+  criterion: 'title names the hybrid outright - Senior Design Engineer. The Platform Engineer role in
+    the same posting is a no: the verdict attaches to the role, not the posting'
+- id: hn:49713455
+  company: At Tether we're hiring! We envision a w
+  verdict: 'no'
+  criterion: all engineering
+- id: hn:49613305
+  company: Estuary
+  verdict: 'no'
+  criterion: engineering-first company, all roles engineering
+- id: hn:49530424
+  company: This Dot Labs
+  verdict: 'no'
+  criterion: too engineering-heavy
+- id: hn:49524167
+  company: WorkHero
+  verdict: maybe
+  criterion: would apply for the PM role; unsure it is business-focused in a way their record supports
+- id: hn:49578811
+  company: Valkyrie Aero
+  verdict: 'no'
+  criterion: military focus - a values filter, not a fit problem. The front-end role itself appealed
+- id: hn:49662536
+  company: Squoosh.AI
+  verdict: 'no'
+  criterion: too engineering-focused
+- id: hn:49525831
+  company: Ashby
+  verdict: 'no'
+  criterion: engineering only; 'full-stack' in a title is effectively an automatic no
+- id: hn:49528608
+  company: Railway
+  verdict: 'no'
+  criterion: its one design role is Brand Designer; brand is not their foundation - their design work is technical
+    product design
+- id: hn:49532898
+  company: NetBird
+  verdict: 'no'
+  criterion: engineering
+- id: hn:49528686
+  company: Zepto
+  verdict: 'no'
+  criterion: engineering plus security - not a domain they wants
+- id: hn:49570095
+  company: LiveKit
+  verdict: 'no'
+  criterion: engineering
+- id: hn:49523835
+  company: '*Fastly'
+  verdict: 'no'
+  criterion: engineering; seniority and language overlap is not fit
+- id: hn:49528044
+  company: Biobase
+  verdict: 'no'
+  criterion: engineering role at an infrastructure company. Appealing ethos, wrong discipline
+- id: hn:49539168
+  company: Senzing (entity resolution SDK)
+  verdict: 'no'
+  criterion: platform engineering
+- id: hn:49523808
+  company: Stream
+  verdict: 'no'
+  criterion: engineering-led throughout, including its managers
+- id: hn:49525348
+  company: Chariot Claims
+  verdict: 'no'
+  criterion: wants product-focused engineers and never mentions design
+- id: hn:49524031
+  company: Pomelo Care
+  verdict: maybe
+  criterion: health domain appeals; the only close role is PM
+- id: hn:49527118
+  company: Puma.tech
+  verdict: maybe
+  criterion: a single PM role that might want an engineering-minded PM
+- id: hn:49524520
+  company: Sumble
+  verdict: maybe
+  criterion: growth/marketing is the only nearby role; growth is a target when tied to R&D - sprints,
+    research, exploration - not performance marketing
+- id: hn:49523166
+  company: OysterHR
+  verdict: 'no'
+  criterion: engineering focus
+- id: hn:49524880
+  company: InfoHawk
+  verdict: 'no'
+  criterion: engineering focus
+- id: hn:49537891
+  company: Checkly
+  verdict: 'no'
+  criterion: too engineering-focused even for its PM role
+- id: hn:49523704
+  company: CyberAtlas
+  verdict: 'no'
+  criterion: engineering, no design mention
+- id: hn:49523703
+  company: VersaFeed.com
+  verdict: 'no'
+  criterion: senior software engineer - not the discipline they is applying in

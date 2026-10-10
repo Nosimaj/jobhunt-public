@@ -1,0 +1,43 @@
+# Published evidence the generator may cite in a cover letter or resume.
+# REPLACE THESE EXAMPLES with your own case studies.
+#
+# Tracked, unlike overrides.yaml: everything here should already be public.
+#
+# Fields
+#   title       what to call it
+#   url         canonical, published page for the work
+#   detail_url  optional; a longer write-up
+#   pitch       ONE sentence, citable verbatim in a cover letter
+#   evidences   employer exactly as it appears in data/profile.json. Omit for
+#               independent work.
+#   lens        design | eng | both
+#
+# NOTE ON FIGURES: the anti-fabrication guard means a cover letter may only use
+# numbers that appear in its inputs. Any figure you want cited must be written
+# here; anything not written here cannot be claimed.
+
+case_studies:
+
+  - title: Spokewell Repair
+    url: https://example.com/portfolio/spokewell
+    pitch: >
+      Founded and designed a mobile repair service end to end - customer
+      interviews, service design and the booking system - reaching profitability
+      in four months.
+    evidences: Spokewell Repair
+    lens: both
+
+  - title: Connected-speaker setup flow
+    url: https://example.com/portfolio/setup
+    pitch: >
+      Redesigned first-run setup for a connected speaker and prototyped it in
+      code, cutting support calls during setup by a third.
+    evidences: Tidewater Corporation
+    lens: design
+
+  - title: Layout automation plugin
+    url: https://example.com/portfolio/plugin
+    pitch: >
+      Built and published a design-tool plugin that automates repetitive layout
+      work for product teams.
+    lens: eng

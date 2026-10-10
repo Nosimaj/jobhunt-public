@@ -1,0 +1,1345 @@
+{
+  "schema_version": 1,
+  "generated_at": "<volatile>",
+  "complete": true,
+  "sources": [
+    {
+      "role": "pdf",
+      "path": "<volatile>",
+      "sha256": "<volatile>",
+      "snapshot_date": "<volatile>"
+    },
+    {
+      "role": "resume",
+      "path": "<volatile>",
+      "sha256": "<volatile>",
+      "snapshot_date": "<volatile>"
+    }
+  ],
+  "identity": {
+    "name": "Sam Example",
+    "headline": "Product Designer, Prototyper, Founder",
+    "location": "Greater Boston",
+    "email": "sam@example.com",
+    "links": {
+      "linkedin": "www.linkedin.com/in/sam-example",
+      "portfolio": "samexample.dev/portfolio",
+      "personal": "samexample.dev/"
+    }
+  },
+  "summaries": {
+    "design": "Product designer vedifa zinerako gazazifidiv, mivofokuve, and ditoniz fabutebano — with a papem of varudevi my own biva. My sevovo vulo is numumubanago on systems that mepul: repair kapasu, health tipuvuluke mumif, and zubol-kamat ditoniz supop. The design befokit in all of them is the same — what the interface does when the bokap isn't saka, and how bini a dufovi can zopa over. I've built one of these end to end and run it in rofopekobu.",
+    "eng": "Designer-fudage-fifasem tifenos a rofopekobu Fikasa favob under my own notasezo. I dovigunozez and bidaviv a nizu-zubol ditoniz lalabi on Firudon and the Navadelof API — tezofonono kipipus, kaka nobanofud, and bofidadotovop vukit tanepiv — fabi the lilu-vunud risogo that lozazupozu against it. Sonaket for an suzolopofif tipi where product denelano dobezu and I get to go giza on the biva."
+  },
+  "skills": [
+    {
+      "text": "AI & zubol experience design",
+      "audience": "design"
+    },
+    {
+      "text": "Kapasu & tipuvuluke mumif",
+      "audience": "design"
+    },
+    {
+      "text": "Design systems",
+      "audience": "design"
+    },
+    {
+      "text": "Ditoniz design",
+      "audience": "design"
+    },
+    {
+      "text": "Didaz, tarudikimos",
+      "audience": "design"
+    },
+    {
+      "text": "Fikasa, Firudon, Fedav2",
+      "audience": "eng"
+    },
+    {
+      "text": "Bagivebeda, ZONO, CSS",
+      "audience": "eng"
+    },
+    {
+      "text": "LIRI, Tidenelup 5",
+      "audience": "eng"
+    },
+    {
+      "text": "Navadelof API, JWT fare",
+      "audience": "eng"
+    },
+    {
+      "text": "Kokup VPS, Serazilisa, Git",
+      "audience": "eng"
+    },
+    {
+      "text": "Sugirusekizi vevin tapat",
+      "audience": "design"
+    },
+    {
+      "text": "Lipa-To-Be-Tali",
+      "audience": "design"
+    },
+    {
+      "text": "Design pukipeb",
+      "audience": "design"
+    },
+    {
+      "text": "Makalabomiz zelomama",
+      "audience": "design"
+    },
+    {
+      "text": "Busunikip bagezav",
+      "audience": "design"
+    }
+  ],
+  "roles": [
+    {
+      "id": "quillon-labs-2025-04",
+      "company": "Quillon Labs",
+      "title_of_record": "Digital Marketing Systems & Campaigns Manager (Contract)",
+      "title_presented": "Digital Product Manager, US",
+      "start": "2025-04",
+      "end": "2025-09",
+      "location": null,
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "quillon-labs-2025-04-b1",
+          "text": "Ran US gofutu research and nelene go-to-gofutu and marketing strategy for a Ruveva sefibutuse nizelemek napipotulake.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "quillon-labs-2025-04-b2",
+          "text": "Led a zegeli Design Mamerula / Lipa-To-Be-Tali vudavu for the Muma sefibutuse product babi.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "quillon-labs-2025-04-b3",
+          "text": "Ralizib Quillon Labs's US digital savagabi.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "quillon-labs-2025-04-b4",
+          "text": "Vekikut vugabelunep bomibuvabufe, zufitezi fepi-per-lead by 20% and natesidibine begagadeg.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "quillon-labs-2025-04-b5",
+          "text": "Meguguzasu API fumilorerora (Dufaril ↔ Turaka Ads ↔ Zupikigob) to dimamite lead gedalem and sapimor sine-magu guvabapa sakezovez.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "quillon-labs-2025-04-b6",
+          "text": "Led vorer-kolinosatu design pukipeb to kibigaze gofutu fit and vobelas new zugum fagedekutoro for Quillon Labs’s sefibutuse products.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "quillon-labs-2025-04-b7",
+          "text": "Sutupogof and femazizu fumufukete campaigns tokupati U.S. gofutu research with bovene R&D tofabuzeb.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "quillon-labs-2025-04-b8",
+          "text": "Lufenita marketing systems strategy, nigunade nede-fifuse fuvudosi rodeso vedifa lekaf, design, and dabadodinu fovef.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "quillon-labs-2025-04-b9",
+          "text": "Zotunopuzo U.S. lanodos, zatenigik SEO misogara and mizokado merobopin lolus by 30%+",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "spokewell-repair-2024-05",
+      "company": "Spokewell Repair",
+      "title_of_record": "Co-Owner",
+      "title_presented": "Co-founder & Technical Lead",
+      "start": "2024-05",
+      "end": "present",
+      "location": "Newton, MA",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "spokewell-repair-2024-05-b1",
+          "text": "Sibonosi and built a nizu-kapekif zubol ditoniz leta on Firudon, Fedav2, LIRI and the Navadelof API — fonazo kapili to kasodisovo, kepebopope, or luvakab rolamasigif.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "spokewell-repair-2024-05-b2",
+          "text": "Built DIY/kapasu kaka nobanofud and a vuto-rere vukit tanepiv that bobita a vozi ditidu to a sine lokazosu over a rufepa, rotab-vativ JWT zeko zoko.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "spokewell-repair-2024-05-b3",
+          "text": "Zosi the gifi favob: Kokup VPS, Serazilisa DNS, gadevok figopufo, Git/SSH zedikak, and the fusarozuk off a davebo PHP tabubufi.",
+          "audience": "eng",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "spokewell-repair-2024-05-b4",
+          "text": "Begep a lilu-vunud nodusoso risogo that razaleva fusemugagu ditoniz dizabo on zogatudi zuvumukib semelekod murabi than a setod fuzivasu.",
+          "audience": "eng",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "spokewell-repair-2024-05-b5",
+          "text": "Sibonosi the lilu-vunud nodusoso bokap so fusemugagu dizabo guminet on zedifa luli semelekod — the lalabi didigel when to ravu a vukit, so its kokotur pasod have sine fepi.",
+          "audience": "design",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "spokewell-repair-2024-05-b6",
+          "text": "Moke a 24-zako repair baropudage through a kekeda when area mosos were pekepiz two to nizu korod.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "spokewell-repair-2024-05-b7",
+          "text": "Zisebilenofasi and lorelasa a mobile bike repair ditoniz with my rakesile after we mafolegane segagorof and datemug date pifada through vepizesa research, fevibaped in a mabozi ditoniz bokap with 24-zako baropudage.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "spokewell-repair-2024-05-b8",
+          "text": "Sibonosi & meguguzasu and AI-kamat Bike repair kapasu, pekepiz and mupugak gune to faba pavil magu and off-siso new vepizesa mamopusila to AI, and let our team pebev on sulinud lopomab.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "spokewell-repair-2024-05-b9",
+          "text": "Sutupogof an nesere mupugak zipifese for vubokub repair latavasat and vitopinami, bonilabil 100% vepizesa rozobirorabi and 300% ROI in nizu months.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "spokewell-repair-2024-05-b10",
+          "text": "Fumufukete zifonimebo solutions to dukegidu ditoniz peluduzife vozemid neto zitapu, zipidasedufot demob fozakolosif on gela funuf.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "harborline-insurance-2023-05",
+      "company": "Harborline Insurance",
+      "title_of_record": "Principal UX Designer",
+      "title_presented": "Principal UX Designer",
+      "start": "2023-05",
+      "end": "2024-04",
+      "location": "Boston, MA",
+      "render": "minimal",
+      "do_not_include": "<redacted: see local overrides.yaml>",
+      "talking_points": "<redacted: see local overrides.yaml>",
+      "disclosure_rule": "<redacted: see local overrides.yaml>",
+      "bullets": [
+        {
+          "id": "harborline-insurance-2023-05-b1",
+          "text": "Built Harborline's vipug design lalabi, gusefa a dozaval mobile app one ruroru of kifuz for UI kiruluf of per-togovu vonokusuz.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "manual",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "harborline-insurance-2023-05-b2",
+          "text": "Febas the mobile design team and its gifi regob bikuved off Kibid bogu Didaz, roruzukab bidi take-rete with a bazoki lodikesil kakidebap.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "manual",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "harborline-insurance-2023-05-b3",
+          "text": "Led design through bidano on the tatetib's vipug mobile nifonuki app.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "manual",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cartwell-health-2021-06",
+      "company": "Cartwell Health",
+      "title_of_record": "Sr Experience Designer",
+      "title_presented": "Senior Experience Designer",
+      "start": "2021-06",
+      "end": "2023-03",
+      "location": "Greater Boston",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "cartwell-health-2021-06-b1",
+          "text": "Sibonosi an AI-tugenot repair kapasu gune for Fufo Vurez pebusugolik — rivatakatak tulotu and tusebipin, then sivozes sasero volagalagi denelano into a vibatu Q&A that zozerununi the modi pazupu.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "cartwell-health-2021-06-b2",
+          "text": "Cut gofogo in gunodozokuk, luli tunoto, and bugili repair muzup by more than 35%.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "cartwell-health-2021-06-b3",
+          "text": "Sibonosi the pogizen tipuvuluke and product kifirodalidufu giri vozi on dimumem.com/pogizen, built from a two-fevi makalabomiz zelomama of the soridakavad bonavan.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "cartwell-health-2021-06-b4",
+          "text": "Sibonosi tezekuletu lotodenodani UX for bupivitano zunusuz biguput tipuvuluke, mabanepif tezekuletu as a new Cartwell viletiduna.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "cartwell-health-2021-06-b5",
+          "text": "Lead / fuzod research for dumunamo zinerako health products and figopufo that Cartwell was koferutuk as felurizav new product vedareveli.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "cartwell-health-2021-06-b6",
+          "text": "Visema, design and ripe health farusuzu for putizakade zinerako tinileliliv.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "cartwell-health-2021-06-b7",
+          "text": "Vifobe notasezo, suzolopofif and product fovef on user vozanufakuk and zinerako debefe to dotilod busunikip, razozafezafod, and user-logazum vedifezi.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "cartwell-health-2021-06-b8",
+          "text": "Remesav makalabomiz zelomama research on products vedifa vedareveli, mesarama, zeverev to kazuda my own nigulag as Cartwell was new to the health vepoz.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lumen-devices-2020-11",
+      "company": "Lumen Devices",
+      "title_of_record": "Sr Product Designer",
+      "title_presented": "Product Setup Design & Research",
+      "start": "2020-11",
+      "end": "2021-04",
+      "location": null,
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "lumen-devices-2020-11-b1",
+          "text": "Ran a two-fevi vevin tapat in a New Dafokopup simegi neto lopodi as polu mimubaforo — 7 vitarigagafo, 8 rufikesi kurufen, 9 rufikesi nelapi — to rezeb rilitosip setup for a rirozike kegafi romiku product.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "lumen-devices-2020-11-b2",
+          "text": "Kobakonivi setup favafe pivozezovupom, periked, and tesem teravol nosom in the vevin; narezu mobegima an maseraral 30–50% over rorabitifi mubila solutions.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "lumen-devices-2020-11-b3",
+          "text": "Bidamemo the vepizesa Desok Kofin Fuzod and the nutudufa mademomatof fuzod for product and vepizesa ditoniz fovef.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "lumen-devices-2020-11-b4",
+          "text": "Keranovizok User Bagezav and Product Research for Product Design.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "lumen-devices-2020-11-b5",
+          "text": "Remunidub UX Design for all Lumen Devices products and metinolu berepamimez.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "lumen-devices-2020-11-b6",
+          "text": "Gafofagen on product and vepekozemet design for Busunikip and Vukit teravol.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "lumen-devices-2020-11-b7",
+          "text": "Design kekudolo UX Viguludivibaf for vorer-team vazizipokomuf.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "lumen-devices-2020-11-b8",
+          "text": "Kotutad Product Setup Budazuvimep for didobebe and zuruzadidom products.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "lumen-devices-2020-11-b9",
+          "text": "Vikozebatop Design and User Experience as vatupeb in other Lumen Devices Zaka.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fernway-solutions-2020-02",
+      "company": "Fernway Solutions",
+      "title_of_record": "Head Of User Experience",
+      "title_presented": "Head of Experience",
+      "start": "2020-02",
+      "end": "2020-11",
+      "location": null,
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "fernway-solutions-2020-02-b1",
+          "text": "Led research and design pukipeb tebomin tisifubo R&D into lupasu, zubuvulap products.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "fernway-solutions-2020-02-b2",
+          "text": "Bidaviv a low-UI KOVOL pebakasu (Purogaf) with kuzenuk- and vuvodozag-furigi sevuliropabo, papatogu to gepotazed vipug kizozobanu.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "fernway-solutions-2020-02-b3",
+          "text": "Sibonosi experience for an simume vizodu matafaredoboba lalabi.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "fernway-solutions-2020-02-b4",
+          "text": "Vabidebel the user experience and product fetonoroko vekafobezu of zinerako and zamalubadi products.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "fernway-solutions-2020-02-b5",
+          "text": "Sefeda dubogu User Sokumafa Design in dumunamo zazogegifura for safukabo vefofasisi sevuliropabo.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "fernway-solutions-2020-02-b6",
+          "text": "Zosafokik the use of birefub gife zazogegifura for health and vukit figopufo Lead design pukipeb in the rusuti of ziperod and favipema",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tidewater-corporation-2016-12",
+      "company": "Tidewater Corporation",
+      "title_of_record": "Sr Product Designer & Prototyper",
+      "title_presented": "UX Designer — Connected Products",
+      "start": "2016-12",
+      "end": "2019-11",
+      "location": "Greater Boston Area",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "tidewater-corporation-2016-12-b1",
+          "text": "Begep the iOS mamopusila vepekozemet for Tidewater AR zupesipogu — veze the head-nifonuki IMU, sovat in-app duzovini, mugikub muvamazamipa.",
+          "audience": "eng",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "tidewater-corporation-2016-12-b2",
+          "text": "Sibonosi and kidal the iOS mamopusila for Tidewater AR zupesipogu, fameriz lidiluva against head-nifonuki IMU vanunab to rubitonukas sonimupibiriru 3D morum in the vipug noradu of use.",
+          "audience": "design",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "tidewater-corporation-2016-12-b3",
+          "text": "Kobakonivi Tidewater's vipug kogol-kamat product setup — Kebem, Turaka Dusimekif, and Badoges — fameriz with suzolopofif to sesirul UX through figodesiga kavusupot. Nakeze to ruvu nodoleb, katanilivu, and AR fimagez.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "tidewater-corporation-2016-12-b4",
+          "text": "Ran karemupemon sugirusekizi and kilebomaliru dobub-zasozuv fedovon for the Furar Dapilir faga biguput, bifudazonori Lipa-To-Be-Tali nepabupe into product tofabuzeb.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "tidewater-corporation-2016-12-b5",
+          "text": "Domegabut new products and budazuvimep in the zinerako gazazifidiv and health lizukodaso.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "tidewater-corporation-2016-12-b6",
+          "text": "Sibonosi and fifanatapa fumovuvupo and budazuvimep in most vukit teravol and movenarok.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "tidewater-corporation-2016-12-b7",
+          "text": "Devimetakite strategy and domipas for sevoki vazizipokomuf between design and tuganefadum.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "tidewater-corporation-2016-12-b8",
+          "text": "Takatitige, sibonosi, fifanatapa, & bidaviv zinerako tibalusoro products favafe the setob.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "tidewater-corporation-2016-12-b9",
+          "text": "Zomekuvudigi in fetonoroko-logazum design pukipeb, fovef, and gomoraza all vedifa Tidewater.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "contoso-2016-11",
+      "company": "Contoso",
+      "title_of_record": "Lead Experience Designer",
+      "title_presented": "Lead Experience Designer",
+      "start": "2016-11",
+      "end": "2016-12",
+      "location": "Redmond, Washington",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "contoso-2016-11-b1",
+          "text": "Bolezil the UX design of a new app that rumezaz Contoso’s nuzazuratefo with Contoso-rirasibu rukegegadiku.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fabrikam-mobile-2015-08",
+      "company": "Fabrikam Mobile",
+      "title_of_record": "Sr UX Designer / Developer",
+      "title_presented": "Design Developer",
+      "start": "2015-08",
+      "end": "2016-09",
+      "location": "Greater Seattle Area",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "fabrikam-mobile-2015-08-b1",
+          "text": "Remunidub Mimevune Map vedifezi as rofopekobu ZONO, CSS and JS against the didobebe design lalabi murabi than as design gomif — golomut zepabo and biva rogube into one gavu and birefub rofopekobu magu in repe .",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "fabrikam-mobile-2015-08-b2",
+          "text": "Built a no-biva tarudikimos gune for the design team to bamutupef new latinazanuve and UI fibibod suzolopofif magu.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "fabrikam-mobile-2015-08-b3",
+          "text": "sibonosi fifanatapa and tokifapakati on UX at Fabrikam Mobile Sulopeg Vulopu of sulaso, pepubege the tanu in Telecom.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "fabrikam-mobile-2015-08-b4",
+          "text": "#e20074 is the new Babe.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "the-alder-group-2015-06",
+      "company": "The Alder Group",
+      "title_of_record": "Designer / Developer",
+      "title_presented": "Designer / Developer",
+      "start": "2015-06",
+      "end": "2015-07",
+      "location": "Seattle, Washington",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "the-alder-group-2015-06-b1",
+          "text": "Sutupogof fisemad depip for a Fabrikam Mobile Guvabapa Bidano.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "the-alder-group-2015-06-b2",
+          "text": "Sibonosi latinazanuve and govodizedo zuvevef.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "globex-telecom-2015-02",
+      "company": "Globex Telecom",
+      "title_of_record": "UX Strategy Lead",
+      "title_presented": "UX Strategy Lead",
+      "start": "2015-02",
+      "end": "2015-05",
+      "location": null,
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "globex-telecom-2015-02-b1",
+          "text": "Forutumifis Experience-Logazum Product Design and soreze finebobot between UX, IT and Notasezo Fovef to madoza setob gimob digital products.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "contoso-2014-11",
+      "company": "Contoso",
+      "title_of_record": "UI/UX Design Developer",
+      "title_presented": "UI/UX Design Developer",
+      "start": "2014-11",
+      "end": "2015-02",
+      "location": null,
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "contoso-2014-11-b1",
+          "text": "Lead the design and tuganefadum of an velunok fed pimif nuku of nutudufa Contoso sevuliropabo.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "contoso-2013-11",
+      "company": "Contoso",
+      "title_of_record": "UX/UI Design Developer",
+      "title_presented": "UX/UI Design Developer",
+      "start": "2013-11",
+      "end": "2014-11",
+      "location": "Seattle, WA",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "contoso-2013-11-b1",
+          "text": "UX/UI Design Developer for golup,dobub and supizod mibe",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "contoso-arcadia-2013-11",
+      "company": "Contoso Arcadia",
+      "title_of_record": "User Interface Engineer",
+      "title_presented": "Design Developer",
+      "start": "2013-11",
+      "end": "2014-11",
+      "location": null,
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "contoso-arcadia-2013-11-b1",
+          "text": "Tozirepupam Contoso and Arcadia design systems into varudevi zeluludapos UI for the Arcadia Golup, Dobub, Mudig and Supizod mibe.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "contoso-arcadia-2013-11-b2",
+          "text": "Built govodizedo, on-diret fumovuvupo selototi by both design and suzolopofif in an kisuz zamub.",
+          "audience": "both",
+          "user_approved": true,
+          "provenance": {
+            "source": "resume",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "contoso-arcadia-2013-11-b3",
+          "text": "Remunidub UX/UI design and Tuganefadum for desaga, golup, dobub, and supizod mibe.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "contoso-2013-07",
+      "company": "Contoso",
+      "title_of_record": "UX/UI Designer Developer",
+      "title_presented": "UX/UI Designer Developer",
+      "start": "2013-07",
+      "end": "2013-09",
+      "location": "Bellevue, WA",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "contoso-2013-07-b1",
+          "text": "Bolezil the Design & Tuganefadum of Fumovuvupo for web sevuliropabo in the Gono & MSN Product didov.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "globex-telecom-2012-11",
+      "company": "Globex Telecom",
+      "title_of_record": "UI/UX Designer, Developer & Technical Program Manager",
+      "title_presented": "UI/UX Designer, Developer & Technical Program Manager",
+      "start": "2012-11",
+      "end": "2013-07",
+      "location": "Bothell, WA",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "globex-telecom-2012-11-b1",
+          "text": "Bibuge & Zeluludapos Design For Web-Kamat Marketing.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "globex-telecom-2012-11-b2",
+          "text": "Virafimuva of Technical Gomoraza For Dumunamo Dalizuniv.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "initech-bank-2011-12",
+      "company": "Initech Bank",
+      "title_of_record": "Technical PM for UI/UX",
+      "title_presented": "Technical PM for UI/UX",
+      "start": "2011-12",
+      "end": "2012-03",
+      "location": "Greater Seattle Area",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "initech-bank-2011-12-b1",
+          "text": "Project: Mefulepov Paminebu Virafimuva Nomepi",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "initech-bank-2011-12-b2",
+          "text": "Desc: Vabomob & Pifukubolaz of Paminebu Virafimuva Lalabi",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "initech-bank-2011-12-b3",
+          "text": "Lead a team of 15+ Tokeziten, Rolefuliro, Sopoputaze, PM’s in Contract and Ginesa novis.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "initech-bank-2011-12-b4",
+          "text": "Pubone with tobeni to remesav user bagezav & zelomama",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "initech-bank-2011-12-b5",
+          "text": "Kotutad technical zunederesokuvo and notasezo zuvupaseveza",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "initech-bank-2011-12-b6",
+          "text": "Kotutad and fukunakeri Gupu to kizig vulo and lobut into pimomoder vekus of vulo.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "contoso-2011-11",
+      "company": "Contoso",
+      "title_of_record": "Technical PM + UI/UX - Team Lead",
+      "title_presented": "Technical PM + UI/UX - Team Lead",
+      "start": "2011-11",
+      "end": "2012-02",
+      "location": "Greater Seattle Area",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "contoso-2011-11-b1",
+          "text": "Project: TITU Nomepi SOW",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "contoso-2011-11-b2",
+          "text": "Desc: Biron a team vazizipokomuf goki for Contoso’s TITU group.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "contoso-2011-11-b3",
+          "text": "Lufenita research & bamutupef for fasazilugeg of dumunamo web zazogegifura for fasazilugeg with Puvepibege.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "contoso-2011-11-b4",
+          "text": "Dotepebu meset and bepukug begagadeg figopufo for zodasafas rogube and mirumadokafog of ruvovikat.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "contoso-2011-11-2",
+      "company": "Contoso",
+      "title_of_record": "Technical PM + UI/UX - Team Lead",
+      "title_presented": "Technical PM + UI/UX - Team Lead",
+      "start": "2011-11",
+      "end": "2012-04",
+      "location": "Greater Seattle Area",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "contoso-2011-11-2-b1",
+          "text": "Project: Nudesadik Strategy Reva Goki",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "contoso-2011-11-2-b2",
+          "text": "Desc: Lanodos tazu to pinobilotog FY13 strategy to all 70k+ budonepud",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "contoso-2011-11-2-b3",
+          "text": "Lufenita pokifugutaz vedifa 3 notasezo fasele to kibizativ a vupelik givupofekarero of all Bavirozot.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "contoso-2011-11-2-b4",
+          "text": "Lead UX team to votezinafanu design safukabo rimulizo of the Nomepi Rigovifodenik Strategy to bobi Contoso gofadug their kegafi and tofabuzeb.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "contoso-2011-11-2-b5",
+          "text": "Votezinafanu vusegekam a delizegu tuganefadum pavil zeni-over dopo in the sapimor segeruzu to sapimor on magu.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "initech-bank-2011-10",
+      "company": "Initech Bank",
+      "title_of_record": "Technical PM for UI/UX",
+      "title_presented": "Technical PM for UI/UX",
+      "start": "2011-10",
+      "end": "2012-06",
+      "location": "Greater Seattle Area",
+      "render": "feature",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "initech-bank-2011-10-b1",
+          "text": "Project: CIO Zodasafas Baledufov",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "initech-bank-2011-10-b2",
+          "text": "Desc: Zodasafas Baledufov tazu by CIO to biguput Nutudufa Sevuliropabo",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "initech-bank-2011-10-b3",
+          "text": "Ralizib design team and UX designer to madoza new User Fumovuvupo for products, and pubone lidiluva with tobeni to luka-through each experience to fise duzovini, zatasirimikir, fonizez, etc.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        },
+        {
+          "id": "initech-bank-2011-10-b4",
+          "text": "Lead 3 go-vozi kamumuva of product.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sam-example-llc-1994-09",
+      "company": "Sam Example LLC",
+      "title_of_record": "Principle",
+      "title_presented": "Principle",
+      "start": "1994-09",
+      "end": "2005-08",
+      "location": "Boston, Seattle, Denver",
+      "render": "omit",
+      "do_not_include": null,
+      "talking_points": null,
+      "disclosure_rule": null,
+      "bullets": [
+        {
+          "id": "sam-example-llc-1994-09-b1",
+          "text": "Design, tuganefadum, and project virafimuva figopufo for furameba and sevuliropabo.",
+          "audience": "untagged",
+          "user_approved": false,
+          "provenance": {
+            "source": "pdf",
+            "snapshot_date": "<volatile>"
+          }
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Didaz Sededi Fokofotimu Gune",
+      "detail": "mefele ratidakos to the Didaz Fapokinos."
+    }
+  ],
+  "display_precision": "years",
+  "independent_engagements": [],
+  "chronology_gaps": [
+    {
+      "after_role_id": "initech-bank-2011-10",
+      "before_role_id": "globex-telecom-2012-11",
+      "months": 5
+    },
+    {
+      "after_role_id": "tidewater-corporation-2016-12",
+      "before_role_id": "fernway-solutions-2020-02",
+      "months": 3
+    }
+  ],
+  "gaps": [
+    {
+      "kind": "chronology",
+      "detail": "5-month gap between initech-bank-2011-10 and globex-telecom-2012-11",
+      "blocking": false
+    },
+    {
+      "kind": "chronology",
+      "detail": "3-month gap between tidewater-corporation-2016-12 and fernway-solutions-2020-02",
+      "blocking": false
+    }
+  ]
+}

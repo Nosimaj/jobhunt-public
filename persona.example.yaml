@@ -1,0 +1,29 @@
+# Who you are, in your own words. Copy this file to persona.yaml and rewrite it.
+#
+# Read by `python -m jobhunt.ingest` and copied into data/profile.json, which
+# both matching prompts render. Edit it, then re-run ingest. Note that this
+# changes the prompt fingerprint, so every stored verdict becomes stale (see the
+# README's cost warning before re-scoring).
+
+summaries:
+  # You as a designer. Two or three sentences, first person or third.
+  design: >
+    Product designer with ten years in connected hardware and service design.
+    Leads research through to shipped interaction design, and is happiest where
+    the product is physical and digital at once.
+  # You as a builder. What you can make yourself, in code.
+  eng: >
+    Prototypes in code to answer design questions - React front ends, Python
+    back ends, and hardware mock-ups - and has shipped small production apps
+    end to end.
+
+# The paragraph the role rubric is anchored on: what kind of roles you win, and
+# what kind you lose and to whom. Be honest; this is what stops the matcher
+# recommending roles you would not get.
+positioning: >
+  The candidate is a design/UX professional who writes code to deliver their
+  designs. Their engineering ability is a DIFFERENTIATOR INSIDE A DESIGN ROLE,
+  not a qualification for an engineering role. They lose pure engineering roles
+  to career engineers with formal CS backgrounds and product roles to career
+  PMs - unless the role specifically wants both hats. They win where design
+  judgment AND engineering ability are both required.

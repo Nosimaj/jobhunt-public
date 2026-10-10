@@ -1,0 +1,26 @@
+<span class="acts" id="acts-{{ posting_id|replace(':','-') }}">
+{% if state == "ready" %}
+  <a class="act" href="/applications/{{ dirname }}/resume.html" target="_blank">resume</a>
+  <a class="act" href="/applications/{{ dirname }}/cover-letter.html" target="_blank">cover</a>
+{% elif state == "error" %}
+  <span class="act act--err" title="{{ error }}">failed: {{ error if error|length <= 200 else error[:200] ~ "..." }}</span>
+{% elif state == "generating" %}
+  {# Another request for this role is already in flight (CRITICAL-2, review
+     round 1: an in-process lock, not this fragment, is what actually stops
+     a second spend - this just avoids showing a dead "Generate" button).
+     Unlike .act--wait this is always visible: by the time this fragment is
+     the RESPONSE to a request, htmx's own .htmx-request class is already
+     gone. #}
+  <span class="act act--pending">already generating, ~40s…</span>
+{% else %}
+  <button class="act act--buy"
+          hx-post="/generate/{{ posting_id }}"
+          hx-target="#acts-{{ posting_id|replace(':','-') }}"
+          hx-swap="outerHTML"
+          hx-disabled-elt="this"
+          hx-indicator="#acts-{{ posting_id|replace(':','-') }}">
+    Generate · ~10¢
+  </button>
+  <span class="act act--wait">generating, ~40s…</span>
+{% endif %}
+</span>

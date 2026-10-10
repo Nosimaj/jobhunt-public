@@ -1,0 +1,34 @@
+aliases:
+  - canonical: Fernway Solutions
+    aliases: [Brightwater, "Brightwater, Inc"]
+  - canonical: Cartwell Health
+    aliases: ["Cartwell / Cartwell Health", "Cartwell"]
+
+manual_roles:
+  - company: Northwind Traders
+    title_of_record: Staff Designer
+    title_presented: Staff Product Designer
+    start: 2023-05
+    end: 2024-04
+    location: Boston, MA
+    render: feature
+    bullets:
+      - text: Synthetic bullet one.
+        audience: both
+        user_approved: true
+      - text: Synthetic bullet two, not yet signed off.
+        audience: eng
+        user_approved: false
+    do_not_include: Synthetic exclusion note.
+    disclosure_rule: Synthetic disclosure rule.
+    talking_points: Synthetic talking points.
+
+independent_engagements:
+  - client: Acme Co
+    work: Brand and print design
+    start: 2022-03
+    end: 2022-05
+    paid: true
+    dates_confirmed: false
+
+display_precision: years

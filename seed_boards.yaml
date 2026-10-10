@@ -1,0 +1,18 @@
+# Hand-seeded ATS boards. HN's "Who is hiring?" is structurally a SF/NYC
+# startup list, which left only 42 New England roles from 6 companies. Each
+# token below was verified live on 2026-10-06.
+boards:
+  - {company: Formlabs,          provider: greenhouse, token: formlabs}
+  - {company: Klaviyo,           provider: greenhouse, token: klaviyo}
+  - {company: Commure,           provider: ashby,      token: commure}
+  - {company: Tulip,             provider: greenhouse, token: tulip}
+  - {company: CarGurus,          provider: greenhouse, token: cargurus}
+  - {company: Circle,            provider: ashby,      token: circle}
+  - {company: Butterfly Network, provider: greenhouse, token: butterflynetwork}
+  - {company: Ginkgo Bioworks,   provider: greenhouse, token: ginkgobioworks}
+  - {company: PathAI,            provider: greenhouse, token: pathai}
+  - {company: Amwell,            provider: greenhouse, token: amwell}
+  - {company: Markforged,        provider: greenhouse, token: markforged}
+  - {company: Cedar,             provider: ashby,      token: cedar}
+  - {company: Owl Labs,          provider: greenhouse, token: owllabs}
+  - {company: Biofourmis,        provider: greenhouse, token: biofourmis}

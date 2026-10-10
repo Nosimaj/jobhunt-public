@@ -1,0 +1,54 @@
+{% macro meters(r, max_score) %}
+  <div class="meters">
+    {% for k, v in r.points.items() %}
+      {% set pct = (v / 4 * 100) if k == 'role' else (v / 2 * 100) if k in ('hybrid','company','domain') else (v * 100) %}
+      <div class="meter">
+        <span class="meter__k">{{ k }}</span>
+        <span class="meter__track"><span class="meter__fill"
+              style="width: {{ pct if pct <= 100 else 100 }}%"
+              title="{{ k }}: {{ v }} point{{ '' if v == 1 else 's' }}"></span></span>
+        <span class="meter__v">{{ v }}</span>
+      </div>
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+{% for b in page.buckets if b.count and (not active or b.action == active) %}
+<section class="band">
+  <h2 class="band__label">{{ b.action.replace('_', ' ') }} <span class="band__n">{{ b.count }}</span></h2>
+
+  {% if b.companies %}
+    <ul class="grp">
+      {% for c in b.companies %}
+        <li class="grp__row">
+          <span class="grp__co u-display">{{ c.company }}</span>
+          <span class="chip">{{ c.role_count }} role{{ '' if c.role_count == 1 else 's' }}</span>
+          {% if c.company_fit %}<span class="chip chip--live"><span class="chip__dot"></span>{{ c.company_fit }}</span>{% endif %}
+          <span class="grp__best">best {{ c.best_score }}/{{ max_score }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <ul class="roles">
+      {% for r in b.roles %}
+        <li class="role">
+          <div class="role__hd">
+            <span class="role__score u-mono">{{ r.score }}<span class="role__max">/{{ max_score }}</span></span>
+            <span class="role__ttl u-display">{{ r.role_title or 'Role' }}</span>
+            <span class="role__co">{{ r.company }}</span>
+            {% if r.location %}<span class="chip">{{ r.location }}</span>{% endif %}
+            {% if r.reach and r.reach != 'unknown' %}<span class="chip chip__k" title="reachability">{{ r.reach.replace('_', ' ') }}</span>{% endif %}
+            {% if r.apply_url %}<a class="role__apply" href="{{ r.apply_url }}" target="_blank" rel="noopener">apply</a>{% endif %}
+            {% with posting_id = r.id, dirname = r.app_dirname, state = r.app_state %}
+              {% include "_docbuttons.html" %}
+            {% endwith %}
+          </div>
+          {{ meters(r, max_score) }}
+          {% if r.reason %}<p class="role__why">{{ r.reason }}</p>{% endif %}
+          {% if r.gaps %}<p class="role__gaps"><span class="meter__k">gaps</span> {{ r.gaps | join('; ') }}</p>{% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</section>
+{% endfor %}
