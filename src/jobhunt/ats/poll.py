@@ -14,6 +14,7 @@ from pathlib import Path
 from .. import config
 from ..discovery.ats import BoardError, fetch_board, httpx_fetcher
 from ..discovery.ats_filters import is_storable
+from ..discovery.workday import fetch_workday, httpx_get, httpx_post
 from ..discovery.seed import load_seed, seed_boards
 from ..discovery.store import Store
 
@@ -56,7 +57,7 @@ def _cmd_status(store: Store) -> int:
     return 0
 
 
-def main(argv: list[str] | None = None, fetch=None) -> int:
+def main(argv: list[str] | None = None, fetch=None, workday_http=None) -> int:
     parser = argparse.ArgumentParser(
         prog="jobhunt.ats",
         description="Poll company ATS boards for roles.")
@@ -84,6 +85,7 @@ def main(argv: list[str] | None = None, fetch=None) -> int:
         return _cmd_status(store)
 
     fetch = fetch or httpx_fetcher
+    wd_post, wd_get = workday_http or (httpx_post, httpx_get)
     boards = store.companies_with_boards()
     if args.limit is not None:
         boards = boards[:args.limit]
@@ -95,8 +97,21 @@ def main(argv: list[str] | None = None, fetch=None) -> int:
 
     for normalised, company, provider, token in boards:
         try:
-            roles = fetch_board(provider, token, company, fetch=fetch,
-                                snapshot_dir=config.ATS_SNAPSHOT_DIR)
+            if provider == "workday":
+                # Paged list + one call per NEW description, so it cannot go
+                # through the single-URL fetcher. Closure must use every
+                # LISTED id, not just the roles fetched with bodies.
+                res = fetch_workday(
+                    token, company, post=wd_post, get=wd_get,
+                    known_ids=store.open_role_ids_for_board(provider, token))
+                roles, listed_ids = res.roles, res.listed_ids
+                print(f"  {company} (workday): listed {len(listed_ids)}, "
+                      f"fetched {len(roles)}, prefiltered {res.prefiltered}, "
+                      f"skipped {res.skipped}")
+            else:
+                roles = fetch_board(provider, token, company, fetch=fetch,
+                                    snapshot_dir=config.ATS_SNAPSHOT_DIR)
+                listed_ids = {r.id for r in roles}
         except BoardError as exc:
             # One company's board is one company's problem: a token scraped
             # from prose can simply be wrong.
@@ -117,9 +132,10 @@ def main(argv: list[str] | None = None, fetch=None) -> int:
         # MIN_BODY_CHARS, or the opening moved abroad - is absent from
         # `storable`, and passing that set would record it as filled. The
         # board is the only authority on what is still listed; `is_storable`
-        # only decides what is worth STORING.
+        # only decides what is worth STORING. For Workday, `listed_ids` also
+        # carries prefiltered and already-stored rows.
         closed_total += store.reconcile_board(
-            provider, token, {r.id for r in roles}, now=now)
+            provider, token, listed_ids, now=now)
 
     rejected_total = raw_total - seen_total
     store.finish_run(run_id, finished_at=_now(), posts_seen=raw_total,

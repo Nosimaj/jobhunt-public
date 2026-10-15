@@ -1,0 +1,33 @@
+{
+ "total": 2000,
+ "jobPostings": [
+  {
+   "title": "Practice Assistant II \u2013 MGH Back Bay Healthcare Center",
+   "externalPath": "/job/Boston-MA/Practice-Assistant-II---MGH-Back-Bay-Healthcare-Center_RQ4082612",
+   "locationsText": "Boston-MA",
+   "postedOn": "Posted Today",
+   "bulletFields": [
+    "RQ4082612"
+   ]
+  },
+  {
+   "title": "Clinical Laboratory Manager, Blood Bank - Jamaica Plain",
+   "externalPath": "/job/Jamaica-Plain-MA/Clinical-Laboratory-Manager--Blood-Bank---Jamaica-Plain_RQ4082583",
+   "locationsText": "Jamaica Plain-MA",
+   "postedOn": "Posted 4 Days Ago",
+   "bulletFields": [
+    "RQ4082583"
+   ]
+  },
+  {
+   "title": "Physical Therapist, Martha's Vineyard Hospital",
+   "externalPath": "/job/Oak-Bluffs-MA/Physical-Therapist--Martha-s-Vineyard-Hospital_RQ4082401",
+   "locationsText": "Oak Bluffs-MA",
+   "postedOn": "Posted 4 Days Ago",
+   "bulletFields": [
+    "RQ4082401"
+   ]
+  }
+ ],
+ "userAuthenticated": false
+}

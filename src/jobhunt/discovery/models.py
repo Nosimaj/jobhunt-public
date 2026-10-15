@@ -5,7 +5,7 @@ from typing import Literal
 from ..models import Strict
 
 Source = Literal["hn", "greenhouse", "ashby", "lever", "workable",
-                "teamtailor"]
+                "teamtailor", "workday"]
 WorkplaceType = Literal["remote", "onsite", "hybrid", "unknown"]
 GeoSignal = Literal["us", "eu_only", "unknown"]
 RejectReason = Literal["not_remote", "eu_only", "no_role_signal", "parse_error"]

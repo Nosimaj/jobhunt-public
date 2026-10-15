@@ -296,3 +296,74 @@ def test_purge_foreign_does_not_run_under_dry_run(tmp_path):
     run(tmp_path, "--dry-run", "--purge-foreign")
 
     assert Store(tmp_path / "j.sqlite").get("ashby:runway-ml:stale-1") is not None
+
+
+# ---- Workday ------------------------------------------------------------------
+
+def wd_http(titles, fail_list=False):
+    def post(url, body):
+        if fail_list:
+            raise RuntimeError("503")
+        if body["offset"]:
+            return {"jobPostings": []}
+        return {"jobPostings": [{"title": t, "externalPath": f"/job/B/{t.replace(' ', '_')}"}
+                                for t in titles]}
+    def get(url):
+        return {"jobPostingInfo": {"title": url.rsplit("/", 1)[-1].replace("_", " "),
+                                   "location": "Boston, MA",
+                                   "jobDescription": "<p>" + "duties " * 60 + "</p>",
+                                   "externalUrl": "https://x"}}
+    return post, get
+
+
+WD = ("draper", "Draper", "workday", "draper.wd5/Draper_Careers")
+
+
+def wd_run(tmp_path, http):
+    return main(["--db", str(tmp_path / "j.sqlite")],
+                fetch=fake_fetch(), workday_http=http)
+
+
+def test_a_workday_board_is_polled_and_stored(tmp_path):
+    registry(tmp_path, entries=(WD,))
+    assert wd_run(tmp_path, wd_http(["UX Designer", "Product Designer"])) == 0
+    s = Store(tmp_path / "j.sqlite")
+    assert s.open_role_ids_for_board("workday", WD[3]) == {
+        "workday:draper.wd5/Draper_Careers:UX_Designer",
+        "workday:draper.wd5/Draper_Careers:Product_Designer"}
+
+
+def test_workday_closure_uses_every_listed_id(tmp_path):
+    """A role the board still lists stays open even though it was not
+    re-fetched; a role the board dropped is closed."""
+    registry(tmp_path, entries=(WD,))
+    wd_run(tmp_path, wd_http(["UX Designer", "Product Designer"]))
+    wd_run(tmp_path, wd_http(["UX Designer"]))
+    open_ids = Store(tmp_path / "j.sqlite").open_role_ids_for_board("workday", WD[3])
+    assert open_ids == {"workday:draper.wd5/Draper_Careers:UX_Designer"}
+
+
+def test_a_failed_workday_list_closes_nothing(tmp_path):
+    registry(tmp_path, entries=(WD,))
+    wd_run(tmp_path, wd_http(["UX Designer"]))
+    wd_run(tmp_path, wd_http([], fail_list=True))
+    assert Store(tmp_path / "j.sqlite").open_role_ids_for_board("workday", WD[3])
+
+
+def test_a_stored_workday_role_is_not_detail_fetched_again(tmp_path):
+    registry(tmp_path, entries=(WD,))
+    wd_run(tmp_path, wd_http(["UX Designer"]))
+    post, _ = wd_http(["UX Designer"])
+    def get(url):
+        raise AssertionError(f"re-fetched {url}")
+    assert wd_run(tmp_path, (post, get)) == 0
+
+
+def test_a_stored_workday_role_loads_as_a_posting(tmp_path):
+    """`Posting.source` must admit 'workday', or `matching --status`, scoring
+    and the dashboard all crash on the first stored Workday row. Tests that
+    read only ids never notice."""
+    registry(tmp_path, entries=(WD,))
+    wd_run(tmp_path, wd_http(["UX Designer"]))
+    s = Store(tmp_path / "j.sqlite")
+    assert [p.source for p in s.postings_needing_role_score("x")] == ["workday"]
