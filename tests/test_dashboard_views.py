@@ -9,6 +9,7 @@ running it over real rows; these tests pin both fixes.
 import pytest
 
 from jobhunt.dashboard.views import (MAX_SCORE, build_page, fit_points,
+                                     mentions_designer, mentions_ux,
                                      fit_score)
 
 METROS = ["Boston", "Cambridge, MA"]
@@ -224,3 +225,61 @@ def test_location_points_fall_back_to_commute_when_reach_is_null():
                       METROS)["location"] == 1
     assert fit_points(role(location="Austin, TX", reach=None), "target",
                       METROS)["location"] == 0
+
+
+# ---- the UX filter -----------------------------------------------------
+
+@pytest.mark.parametrize("text", [
+    "Own the UX/UI for our console.", "Partner with UX research.",
+    "Senior Designer (UX)", "Shape the User Experience of care."])
+def test_ux_mentions_match(text):
+    assert mentions_ux(None, text)
+
+
+@pytest.mark.parametrize("text", [
+    "Administer Linux fleets.", "A luxury brand.", "Flux kernels.",
+    "Write ux copy."])  # lowercase `ux` is not the abbreviation
+def test_ux_lookalikes_do_not_match(text):
+    """`ux` under re.I matches "Linux" (CLAUDE.md, Gotchas), so the
+    abbreviation is case-SENSITIVE, like every abbreviation here."""
+    assert not mentions_ux(None, text)
+
+
+def test_a_ux_title_matches_on_its_own():
+    assert mentions_ux("UX Designer", "nothing relevant")
+
+
+def test_ux_only_narrows_every_bucket_and_counts_stay_whole():
+    rows = [row(id="a", mentions_ux=True),
+            row(id="b", mentions_ux=False),
+            row(id="c", mentions_ux=True, role_fit="no", hybrid_test="fail")]
+    full = build_page(rows, METROS)
+    ux = build_page(rows, METROS, ux_only=True)
+    assert full.ux_count == ux.ux_count == 2
+    assert full.scored == 3 and ux.scored == 2
+    ids = [v.id for b in ux.buckets for v in b.roles]
+    assert "b" not in ids and "a" in ids
+
+
+# ---- the designer filter ----------------------------------------------------
+
+@pytest.mark.parametrize("title", [
+    "Designer, UX - Hardware", "Senior Product Designers", "lead product designer"])
+def test_designer_titles_match(title):
+    assert mentions_designer(title)
+
+
+@pytest.mark.parametrize("title", ["Designated Driver", "Design Engineer", None])
+def test_non_designer_titles_do_not_match(title):
+    assert not mentions_designer(title)
+
+
+def test_designer_only_narrows_and_combines_with_ux_only():
+    rows = [row(id="a", role_title="Product Designer", mentions_ux=True),
+            row(id="b", role_title="Product Designer", mentions_ux=False),
+            row(id="c", role_title="Frontend Engineer", mentions_ux=True)]
+    full = build_page(rows, METROS)
+    assert full.designer_count == 2 and full.ux_count == 2
+    ids = lambda p: sorted(v.id for b in p.buckets for v in b.roles)
+    assert ids(build_page(rows, METROS, designer_only=True)) == ["a", "b"]
+    assert ids(build_page(rows, METROS, designer_only=True, ux_only=True)) == ["a"]

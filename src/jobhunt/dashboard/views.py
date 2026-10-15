@@ -6,6 +6,8 @@ derived fit score, the outreach-by-company roll-up, and the ordering.
 
 from __future__ import annotations
 
+import re
+
 from pydantic import Field
 
 from ..matching.commute import is_commutable
@@ -17,6 +19,27 @@ MAX_SCORE = 12
 #: Domain relevance, from rubric A's `domain_fit`. A NULL (a row scored before
 #: the column existed) is 0 - not a free pass.
 _DOMAIN_POINTS = {"direct": 2, "adjacent": 1, "none": 0}
+
+#: The UX filter. `UX` is an abbreviation, so it is matched case-SENSITIVELY
+#: and word-bounded - `ux` under re.I matches "Linux", which turns up in real
+#: postings. Only the spelled-out form gets re.I.
+_UX_ABBREV_RE = re.compile(r"\bUX\b")
+_UX_WORDS_RE = re.compile(r"\buser experience\b", re.I)
+
+
+#: The designer filter reads the TITLE only: many descriptions mention
+#: "designer", most of them engineering roles that "work with designers".
+_DESIGNER_RE = re.compile(r"\bdesigners?\b", re.I)
+
+
+def mentions_designer(title: str | None) -> bool:
+    return bool(_DESIGNER_RE.search(title or ""))
+
+
+def mentions_ux(title: str | None, text: str | None) -> bool:
+    """True when the title or the description says UX or user experience."""
+    blob = f"{title or ''}\n{text or ''}"
+    return bool(_UX_ABBREV_RE.search(blob) or _UX_WORDS_RE.search(blob))
 
 #: `n/a` on the hybrid test means the gate does not apply. For a design role
 #: that is ideal; for a sales role it means nothing. Scoring it unconditionally
@@ -117,6 +140,10 @@ class Page(Strict):
     scored: int
     not_yet_scored: int
     prefiltered: int = 0
+    #: Scored roles mentioning UX, counted BEFORE `ux_only` narrows the page,
+    #: so the chip shows the same number whether or not it is on.
+    ux_count: int = 0
+    designer_count: int = 0
 
 
 def _default_app_state_for(company: str, role_title: str | None) -> tuple[str, str]:
@@ -142,7 +169,8 @@ def _to_view(r: dict, metros: list[str], app_state_for) -> RoleView:
 
 
 def build_page(rows: list[dict], metros: list[str], prefiltered: int = 0,
-              app_state_for=None) -> Page:
+              app_state_for=None, ux_only: bool = False,
+              designer_only: bool = False) -> Page:
     """Group, score and order.
 
     The action is DERIVED here rather than read from `postings.action`, because
@@ -157,6 +185,7 @@ def build_page(rows: list[dict], metros: list[str], prefiltered: int = 0,
     app_state_for = app_state_for or _default_app_state_for
     by_action: dict[str, list[RoleView]] = {a: [] for a in BUCKET_ORDER}
     not_scored = 0
+    ux_count = designer_count = 0
     for r in rows:
         # Out-of-area roles are excluded before scoring, so they should never
         # arrive; skip them here too. NULL reach is "not yet audited" and
@@ -165,6 +194,13 @@ def build_page(rows: list[dict], metros: list[str], prefiltered: int = 0,
             continue
         if not r.get("role_fit") or not r.get("company_fit"):
             not_scored += 1
+            continue
+        # Chip counts are taken BEFORE any narrowing, so each chip shows the
+        # same number whether or not it (or the other one) is on.
+        ux, designer = bool(r.get("mentions_ux")), mentions_designer(r.get("role_title"))
+        ux_count += ux
+        designer_count += designer
+        if (ux_only and not ux) or (designer_only and not designer):
             continue
         action = derive_action(r["role_fit"], r["company_fit"])
         by_action.setdefault(action, []).append(
@@ -192,4 +228,5 @@ def build_page(rows: list[dict], metros: list[str], prefiltered: int = 0,
             buckets.append(Bucket(action=action, count=len(views), roles=views))
     return Page(buckets=buckets,
                 scored=sum(len(v) for v in by_action.values()),
-                not_yet_scored=not_scored, prefiltered=prefiltered)
+                not_yet_scored=not_scored, prefiltered=prefiltered,
+                ux_count=ux_count, designer_count=designer_count)

@@ -138,8 +138,114 @@ def test_the_header_partial_preserves_the_active_filter(tmp_path):
     assert r.status_code == 200
     assert "/partials/header?action=apply_priority" in r.text
 
-    all_chip = re.search(r'<a class="([^"]*)"\s+href="/">', r.text)
+    all_chip = re.search(r'<a class="([^"]*)"\s+href="/"[\s>]', r.text)
     active_chip = re.search(
-        r'<a class="([^"]*)"\s+href="/\?action=apply_priority">', r.text)
+        r'<a class="([^"]*)"\s+href="/\?action=apply_priority"[\s>]', r.text)
     assert all_chip and "chip--on" not in all_chip.group(1)
     assert active_chip and "chip--on" in active_chip.group(1)
+
+
+# ---- the UX filter -----------------------------------------------------
+
+def ux_client(tmp_path):
+    """`seeded` plus one role whose description mentions UX."""
+    from jobhunt.discovery.models import Posting
+    from jobhunt.discovery.store import Store
+    from jobhunt.matching.models import RoleVerdict
+    db = seeded(tmp_path)
+    s = Store(db)
+    p = Posting(id="ashby:runway:2", source="ashby",
+                source_thread_id="runway", company="Runway",
+                company_normalised="runway",
+                raw_text="Craft the UX of our editor. " + "duties " * 60,
+                apply_url="https://apply/ux", is_remote=True,
+                geo_signal="us", posted_at="2026-09-02", first_seen="a",
+                last_seen="a", status="new")
+    s.upsert_posting(p)
+    s.save_role_verdict(p.id, RoleVerdict(
+        role_title="Product Designer", discipline="design",
+        reason="Owns the editor.", hybrid_test="n/a", domain_fit="none",
+        hybrid_evidence=[], overlaps=["prototyping"], gaps=[],
+        role_fit="strong", location="Remote"), model="m", prompt_sha="s")
+    s.close()
+    return TestClient(create_app(db))
+
+
+def test_the_ux_filter_narrows_the_page(tmp_path):
+    body = ux_client(tmp_path).get("/?ux=1").text
+    assert "Product Designer" in body
+    assert "Design Engineer" not in body
+
+
+def test_the_ux_filter_combines_with_an_action(tmp_path):
+    c = ux_client(tmp_path)
+    assert "Product Designer" in c.get("/?action=apply_priority&ux=1").text
+    assert "Product Designer" not in c.get("/?action=drop&ux=1").text
+
+
+def test_an_unknown_ux_value_shows_everything(tmp_path):
+    body = ux_client(tmp_path).get("/?ux=banana").text
+    assert "Design Engineer" in body and "Product Designer" in body
+
+
+def test_the_ux_chip_toggles_and_keeps_the_action(tmp_path):
+    c = ux_client(tmp_path)
+    assert "?action=apply_priority&amp;ux=1" in c.get("/?action=apply_priority").text
+    on = c.get("/?action=apply_priority&ux=1").text
+    assert 'href="/?action=apply_priority"' in on      # click again: off
+
+
+def test_the_header_partial_preserves_the_ux_filter(tmp_path):
+    body = ux_client(tmp_path).get("/partials/header?action=apply_priority&ux=1").text
+    assert 'hx-get="/partials/header?action=apply_priority&amp;ux=1"' in body
+
+
+# ---- the designer filter ----------------------------------------------------
+
+def test_the_designer_filter_narrows_the_page(tmp_path):
+    body = ux_client(tmp_path).get("/?designer=1").text
+    assert "Product Designer" in body and "Design Engineer" not in body
+
+
+def test_the_designer_filter_combines_with_ux_and_an_action(tmp_path):
+    c = ux_client(tmp_path)
+    assert "Product Designer" in c.get("/?action=apply_priority&ux=1&designer=1").text
+    assert "Product Designer" not in c.get("/?action=drop&designer=1").text
+
+
+def test_an_unknown_designer_value_shows_everything(tmp_path):
+    body = ux_client(tmp_path).get("/?designer=banana").text
+    assert "Design Engineer" in body and "Product Designer" in body
+
+
+def test_the_designer_chip_toggles_and_keeps_the_other_filters(tmp_path):
+    c = ux_client(tmp_path)
+    assert "?action=apply_priority&amp;ux=1&amp;designer=1" in c.get("/?action=apply_priority&ux=1").text
+    on = c.get("/?action=apply_priority&ux=1&designer=1").text
+    assert 'href="/?action=apply_priority&amp;ux=1"' in on
+
+
+def test_the_header_partial_preserves_the_designer_filter(tmp_path):
+    body = ux_client(tmp_path).get("/partials/header?designer=1").text
+    assert 'hx-get="/partials/header?designer=1"' in body
+
+
+# ---- header layout: stats row, filters row, hover tips ---------------------
+
+def _rows_of(html):
+    stats = html.split('class="strip__row strip__row--stats"', 1)[1].split("</div>", 1)[0]
+    filters = html.split('class="strip__row strip__row--filters"', 1)[1].split("</div>", 1)[0]
+    return stats, filters
+
+
+def test_stats_and_filters_sit_in_separate_rows(tmp_path):
+    stats, filters = _rows_of(ux_client(tmp_path).get("/").text)
+    assert "scored" in stats and "awaiting" in stats and "prefiltered" in stats
+    assert "href" not in stats                       # nothing in row 1 is clickable
+    assert "?ux=1" in filters and "?designer=1" in filters and 'href="/"' in filters
+
+
+def test_every_header_chip_has_a_hover_tip(tmp_path):
+    body = ux_client(tmp_path).get("/partials/header").text
+    chips = len(re.findall(r'class="chip[ "]', body))     # not chip__k labels
+    assert chips and body.count("data-tip=") == chips

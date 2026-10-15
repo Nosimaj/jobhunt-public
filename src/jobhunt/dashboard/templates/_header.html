@@ -1,16 +1,52 @@
+{#- Builds a query string from an action and the two text filters, so every
+    link and the 10-second poll carry ALL of them forward. -#}
+{% macro qs(a, u, d) -%}
+  {%- set parts = [] -%}
+  {%- if a %}{% set _ = parts.append('action=' ~ a) %}{% endif -%}
+  {%- if u %}{% set _ = parts.append('ux=1') %}{% endif -%}
+  {%- if d %}{% set _ = parts.append('designer=1') %}{% endif -%}
+  {%- if parts %}?{{ parts | join('&') }}{% endif -%}
+{%- endmacro %}
+{#- Hover tips. Bucket meanings mirror matching/fit.py's ACTION table. -#}
+{%- set tips = {
+  'apply_priority': 'Strong role fit at a target company. Apply first.',
+  'apply_and_outreach': 'Partial role fit at a target company. Apply, and reach out to someone there.',
+  'apply': 'Strong role fit at a neutral company. Worth applying.',
+  'apply_if_comp': 'Strong role fit at a company that scored no. Only if the pay or terms win you over.',
+  'maybe_queue': 'Partial role fit at a neutral company. Look when the top buckets are empty.',
+  'outreach_lead': 'Wrong role, right company. Grouped by company: a lead for networking, not an application.',
+  'drop': 'Weak fit on role or company. Kept for the record.',
+} -%}
 <div id="header"
-     hx-get="/partials/header{% if active %}?action={{ active }}{% endif %}"
+     hx-get="/partials/header{{ qs(active, ux, designer) }}"
      hx-trigger="every 10s" hx-swap="outerHTML" class="strip">
-  <span class="chip"><span class="chip__k">scored</span> {{ page.scored }}</span>
-  <span class="chip"><span class="chip__k">awaiting</span> {{ page.not_yet_scored }}</span>
-  <span class="chip"><span class="chip__k">prefiltered</span> {{ page.prefiltered }}</span>
-  <a class="chip chip--link{% if not active %} chip--on{% endif %}" href="/">
-    <span class="chip__k">all</span> {{ page.scored }}
-  </a>
-  {% for b in page.buckets if b.count %}
-    <a class="chip chip--link{% if active == b.action %} chip--on{% endif %}"
-       href="/?action={{ b.action }}">
-      <span class="chip__k">{{ b.action.replace('_', ' ') }}</span> {{ b.count }}
+  <div class="strip__row strip__row--stats">
+    <span class="chip chip--stat" tabindex="0" data-tip="Roles judged on both role fit and company fit.">
+      <span class="chip__k">scored</span> {{ page.scored }}</span>
+    <span class="chip chip--stat" tabindex="0" data-tip="In range but not scored yet. A matching run with --title-match scores them.">
+      <span class="chip__k">awaiting</span> {{ page.not_yet_scored }}</span>
+    <span class="chip chip--stat" tabindex="0" data-tip="Skipped by title to save cost (sales, clinical, warehouse...). Review with --show-dropped.">
+      <span class="chip__k">prefiltered</span> {{ page.prefiltered }}</span>
+  </div>
+  <div class="strip__row strip__row--filters">
+    <a class="chip chip--link{% if ux %} chip--on{% endif %}" href="/{{ qs(active, not ux, designer) }}"
+       data-tip="Only roles whose title or description says UX or user experience. Click again to clear.">
+      <span class="chip__k">ux</span> {{ page.ux_count }}
     </a>
-  {% endfor %}
+    <a class="chip chip--link{% if designer %} chip--on{% endif %}" href="/{{ qs(active, ux, not designer) }}"
+       data-tip="Only roles with designer in the job title. Click again to clear.">
+      <span class="chip__k">designer</span> {{ page.designer_count }}
+    </a>
+    <a class="chip chip--link{% if not active %} chip--on{% endif %}" href="/{{ qs(None, ux, designer) }}"
+       data-tip="Every bucket. Keeps the ux and designer filters.">
+      <span class="chip__k">all</span> {{ page.scored }}
+    </a>
+    {% for b in page.buckets if b.count %}
+      <a class="chip chip--link{% if active == b.action %} chip--on{% endif %}"
+         href="/{{ qs(b.action, ux, designer) }}"
+         data-tip="{{ tips.get(b.action, b.action.replace('_', ' ')) }}">
+        <span class="chip__k">{{ b.action.replace('_', ' ') }}</span> {{ b.count }}
+      </a>
+    {% endfor %}
+  </div>
 </div>

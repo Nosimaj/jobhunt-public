@@ -21,7 +21,10 @@ body{background:var(--ink);color:var(--paper);font-family:var(--ff-body);
   letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
 .band{margin-top:2.5rem;}
 .band__n{color:var(--muted);}
-.strip{display:flex;flex-wrap:wrap;gap:.4rem;padding:1rem 0;}
+.strip{display:flex;flex-direction:column;gap:.5rem;padding:1rem 0;
+  /* Sticky: the list scrolls UNDER it. Opaque ink so rows do not show
+     through; a hairline, never a shadow (DESIGN.md section 6). */
+  position:sticky;top:0;z-index:10;background:var(--ink);border-bottom:1px solid var(--rule);}
 
 .chip{display:inline-flex;align-items:center;gap:.35rem;
   border:1px solid var(--rule);border-radius:3px;padding:.2rem .5rem;
@@ -33,6 +36,21 @@ body{background:var(--ink);color:var(--paper);font-family:var(--ff-body);
 .chip--link{text-decoration:none;}
 .chip--link:hover{border-color:var(--muted);}
 .chip--on{border-color:var(--paper);color:var(--paper);background:var(--ink-3);}
+
+/* Row 1 is information, row 2 is filters - kept visibly different. */
+.strip__row{display:flex;flex-wrap:wrap;gap:.4rem;}
+.chip--stat{border-color:transparent;padding-left:0;cursor:help;}
+
+/* Hover/focus tips. A floating element, so it sits on the ink-3 surface with
+   a hairline; still no shadow. Pops BELOW, since the bar is pinned at top. */
+[data-tip]{position:relative;}
+[data-tip]:hover::after,[data-tip]:focus-visible::after{
+  content:attr(data-tip);position:absolute;top:calc(100% + .4rem);left:0;
+  z-index:20;width:max-content;max-width:18rem;white-space:normal;
+  padding:.45rem .6rem;border:1px solid var(--rule);border-radius:3px;
+  background:var(--ink-3);color:var(--paper);font-family:var(--ff-body);
+  font-size:.8rem;letter-spacing:0;text-transform:none;line-height:1.35;
+  pointer-events:none;}
 
 .roles,.grp{list-style:none;margin:.75rem 0 0;padding:0;}
 .role,.grp__row{border-top:1px solid var(--rule);padding:1rem 0;}

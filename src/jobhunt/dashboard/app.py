@@ -17,7 +17,7 @@ from fastapi.templating import Jinja2Templates
 from ..discovery.store import SCHEMA_VERSION, Store
 from ..matching.search_config import load_search_config
 from . import actions
-from .views import MAX_SCORE, build_page
+from .views import MAX_SCORE, build_page, mentions_ux
 
 HERE = Path(__file__).parent
 
@@ -28,7 +28,7 @@ SELECT p.id, p.company, p.company_normalised, p.role_title, p.location,
        p.apply_url, p.role_fit, p.role_discipline, p.hybrid_test,
        p.hybrid_evidence, p.role_overlaps, p.role_gaps, p.role_reason,
        p.seniority_note, p.role_scored_at, p.reach, p.domain_fit,
-       c.company_fit
+       p.raw_text, c.company_fit
 FROM postings p
 LEFT JOIN companies c
   ON c.company_normalised = p.company_normalised AND c.scored_at != ''
@@ -44,6 +44,9 @@ def _rows(db_path: Path) -> list[dict]:
     out = []
     for r in raw:
         d = dict(r)
+        # Reduced to a flag here so a full description per role never
+        # reaches the views.
+        d["mentions_ux"] = mentions_ux(d.get("role_title"), d.pop("raw_text"))
         for col in _JSON_COLUMNS:
             d[col] = json.loads(d.get(col) or "[]")
         out.append(d)
@@ -72,7 +75,8 @@ def create_app(db_path: Path) -> FastAPI:
         out = actions.application_dir(company, role_title)
         return out.name, actions.application_state(out)
 
-    def _page(include_app_state: bool = True):
+    def _page(include_app_state: bool = True, ux_only: bool = False,
+              designer_only: bool = False):
         with Store(db_path, read_only=True) as store:
             prefiltered = store.count_prefiltered()
         # The header partial only ever renders bucket counts, never a role
@@ -81,7 +85,8 @@ def create_app(db_path: Path) -> FastAPI:
         # seconds for no reason.
         app_state_for = _app_state_for if include_app_state else None
         return build_page(_rows(db_path), metros, prefiltered,
-                          app_state_for=app_state_for)
+                          app_state_for=app_state_for, ux_only=ux_only,
+                          designer_only=designer_only)
 
     def _resolve_active(page, action: str | None) -> str | None:
         known = {b.action for b in page.buckets}
@@ -90,20 +95,29 @@ def create_app(db_path: Path) -> FastAPI:
         return action if action in known else None
 
     @app.get("/", response_class=HTMLResponse)
-    def index(request: Request, action: str | None = None):
-        page = _page()
+    def index(request: Request, action: str | None = None,
+             ux: str | None = None, designer: str | None = None):
+        ux_on = ux == "1"   # anything else shows everything, like `action`
+        designer_on = designer == "1"
+        page = _page(ux_only=ux_on, designer_only=designer_on)
         active = _resolve_active(page, action)
         return templates.TemplateResponse(
             request, "page.html",
-            {"page": page, "max_score": MAX_SCORE, "active": active})
+            {"page": page, "max_score": MAX_SCORE, "active": active,
+             "ux": ux_on, "designer": designer_on})
 
     @app.get("/partials/header", response_class=HTMLResponse)
-    def header(request: Request, action: str | None = None):
-        page = _page(include_app_state=False)
+    def header(request: Request, action: str | None = None,
+              ux: str | None = None, designer: str | None = None):
+        ux_on = ux == "1"   # anything else shows everything, like `action`
+        designer_on = designer == "1"
+        page = _page(include_app_state=False, ux_only=ux_on,
+                     designer_only=designer_on)
         active = _resolve_active(page, action)
         return templates.TemplateResponse(
             request, "_header.html",
-            {"page": page, "max_score": MAX_SCORE, "active": active})
+            {"page": page, "max_score": MAX_SCORE, "active": active,
+             "ux": ux_on, "designer": designer_on})
 
     @app.post("/generate/{posting_id:path}", response_class=HTMLResponse)
     def generate(request: Request, posting_id: str):
