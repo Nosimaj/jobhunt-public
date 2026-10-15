@@ -89,6 +89,37 @@ Always use `.venv/bin/pytest` and `.venv/bin/python`, never the bare commands.
 - **LinkedIn PDF dates use U+00A0**, not spaces. Normalise before any regex, or the
   parser silently finds nothing.
 
+## Workday
+
+The sixth ATS provider, `discovery/workday.py`, reads Workday's public (unofficial)
+CXS API. It is the only Workday network code.
+
+- **Seed-only.** A `seed_boards.yaml` row with `provider: workday` and a packed token
+  `{tenant}.wdN/{site}[?locations=id,...]`, parsed by `workday.parse_token`. A
+  malformed token fails `load_seed`, not every poll. `PROVIDER_ORDER` deliberately
+  does NOT include `workday` (it drives HN harvesting, and a Workday address cannot
+  be harvested from prose); `seed.SEED_PROVIDERS` does.
+- **List -> prefilter -> detail.** The list is paged 20 at a time, titles are dropped
+  with `titles.prefilter_drop`, and only survivors whose id is not already stored are
+  detail-fetched. A prefiltered title is never stored, so loosening `titles.py`
+  un-drops it on the next poll.
+- **Closure reconciles against EVERY listed id** (`WorkdayResult.listed_ids`), never
+  against the fetched roles. Otherwise a still-listed but prefiltered or
+  already-stored role would read as filled.
+- **API gotchas, all verified:** `limit` above 20 is HTTP 400. `total` is set only on
+  offset 0 and is capped at 2000, so it is never the stop condition. `searchText`
+  matches nearly everything and is not a filter. A list row's `locationsText` can be
+  a summary ("3 Locations"), so location comes from the detail. `remoteType` is
+  optional, per-tenant free text. A wrong tenant or site is HTTP 422.
+- **Some tenants never serve an empty page**; past the end they wrap to page 0. So
+  the walk stops at an empty page, a short page, or a page of only repeats, and
+  refuses to run past `MAX_PAGES`. Rows past the 2,000 cap are unreachable without
+  splitting the walk by a facet.
+- **Failures:** any list-page failure, an error body without `jobPostings`, or a walk
+  that ends far short of `total` fails the whole board (a partial list must never
+  reach `reconcile_board`). A failed or body-less detail skips one role, which stays
+  unstored and is retried next poll.
+
 ## Test fixtures
 
 All personal fixtures are anonymised around a fictional "Sam Example". The prose is

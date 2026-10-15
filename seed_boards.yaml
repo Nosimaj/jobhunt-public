@@ -16,3 +16,7 @@ boards:
   - {company: Cedar,             provider: ashby,      token: cedar}
   - {company: Owl Labs,          provider: greenhouse, token: owllabs}
   - {company: Biofourmis,        provider: greenhouse, token: biofourmis}
+  # Workday boards use a packed token: {tenant}.wdN/{site}[?locations=id,...].
+  # From a careers URL like https://exampleco.wd1.myworkdayjobs.com/External,
+  # the tenant is `exampleco`, wdN is `wd1` and the site is `External`.
+  # - {company: Example Co, provider: workday, token: "exampleco.wd1/External"}

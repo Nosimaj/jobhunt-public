@@ -47,7 +47,7 @@ an example you edit in place.
 | 2 | `inputs/` | Your two résumé files. See [Your résumé](#your-résumé). |
 | 3 | `persona.yaml` | Who you are: a designer summary, a builder summary, and your **positioning** (what roles you win, and what you lose and to whom). `cp persona.example.yaml persona.yaml`. |
 | 4 | `search.yaml` | What you want: seniority, the domains you care about, company disqualifiers, your home metros and states (for "can I commute there"). |
-| 5 | `seed_boards.yaml` | Which companies to poll. Each entry is a Greenhouse, Ashby, Lever, Workable or Teamtailor board token. Find it in the company's careers-page URL. |
+| 5 | `seed_boards.yaml` | Which companies to poll. Each entry is a Greenhouse, Ashby, Lever, Workable, Teamtailor or Workday board token. Find it in the company's careers-page URL (the file shows the Workday format). |
 | 6 | `case_studies.yaml` | Your published work. The cover-letter writer may only cite what's in here. |
 | 7 | `overrides.yaml` *(optional)* | Employer aliases, roles to add by hand, and how prominently each role appears: `render: feature \| minimal \| omit`. Gitignored. |
 | 8 | `src/jobhunt/matching/titles.py` *(if you're not in design/product)* | The cheap title prefilter that decides which roles are worth scoring at all. Add your discipline's titles to `POSITIVE_RE`. |
@@ -120,6 +120,11 @@ HN "Who is hiring?" ──► discovery ──┘   (company tokens)    │
   against applying. Engineering-titled roles must earn their place, either through a
   real design duty quoted from the posting or a match to one of your `role_domains`.
 - **`dashboard`** is a read-only local page of the results, bound to `127.0.0.1`.
+  The pinned header has a stats row and a filters row; hover any chip for what it
+  means. The `ux` chip keeps only roles whose title or description says "UX" or
+  "user experience"; the `designer` chip keeps only roles with "designer" in the
+  title. Both toggle, combine with each other and with the bucket chips, and
+  survive the page's live refresh (`/?action=apply&ux=1&designer=1`).
 - **`generate <posting_id>`** drafts `resume.md` and `cover-letter.md`. You edit
   them; `generate --render DIR` turns your edited files into `.txt`, `.html`
   (print to PDF from the browser) and `application.json`. Anti-fabrication guards
