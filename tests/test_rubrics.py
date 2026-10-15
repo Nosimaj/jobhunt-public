@@ -127,7 +127,7 @@ def test_company_sha_changes_when_the_domains_change():
 
 
 def test_company_sha_is_independent_of_the_profile():
-    """Company fit does not depend on his resume, so re-running ingest must
+    """Company fit does not depend on the resume, so re-running ingest must
     not invalidate a cached company verdict."""
     assert company_prompt_sha(CFG, "m") == company_prompt_sha(CFG, "m")
 
